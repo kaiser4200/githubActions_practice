@@ -11,16 +11,16 @@ jobs:
   get-value-workflow:
     runs-on: windows-latest
     outputs:
-      msg: ${{steps.generate_message.outputs.message}}
+      msg: ${{ steps.generate_message.outputs.message }}
     steps:
       - name: Generate message
         id: generate_message
-        run: echo "message=Hello, ${{github.event.inputs.name}}!" >> $GITHUB_OUTPUT
+        run: echo "message=Hello, ${{ github.event.inputs.name }}!" >> $GITHUB_OUTPUT
 
   print-value-workflow:
     runs-on: windows-latest
     needs: [get-value-workflow]
     steps:
       - name: print message
-        run: echo "${{needs.get-value-workflow.outputs.msg}}"
+        run: echo "${{ needs.get-value-workflow.outputs.msg }}"
 
