@@ -4,20 +4,20 @@ on:
 
 jobs:
   First-jobs-workflow:
-    runs-on: windows
+    runs-on: windows-latest
     steps:
       - name: First Workflow
         run: echo "This is first workflow"
 
   Second-jobs-workflow:
-    runs-on: windows
+    runs-on: windows-latest
     needs: [First-jobs-workflow]
     steps:
       - name: Second Workflow
         run: echo "This is second workflow"
 
   Third-jobs-workflow:
-    runs-on: windows
+    runs-on: windows-latest
     needs: [First-jobs-workflow, Second-jobs-workflow]
     steps:
       - name: Third Workflow
