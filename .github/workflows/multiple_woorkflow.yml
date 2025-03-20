@@ -1,0 +1,18 @@
+name: Multi Jobs Workflow
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  First-jobs-workflow:
+    runs-on: windows
+    steps:
+      - name: First Workflow
+        run: echo "This is first workflow"
+
+  Second-jobs-workflow:
+    runs-on: windows
+    steps:
+      - name: Second Workflow
+        run: echo "This is second workflow"
