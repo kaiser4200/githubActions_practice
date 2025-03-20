@@ -1,0 +1,24 @@
+name:  Value Pass Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter your name"
+        required: true
+        default: "unnamed"
+
+jobs:
+  get-value-workflow:
+    runs-on: windows-latest
+    id: generate_message
+    steps:
+      - name: Generate message
+        run: echo "message = Hello, ${{github.event.inputs.name}}" >> $GITHUB_OUTPUT
+
+  print-value-workflow:
+    runs-on: windows-latest
+    needs: [get-value-workflow]
+    steps:
+      - name: print message
+        run: echo "${{needs.get-value-workflow.generate_message.message}}"
+
