@@ -1,0 +1,24 @@
+name: Multi Jobs Workflow
+on:
+  workflow_dispatch
+
+jobs:
+  First-jobs-workflow:
+    runs-on: windows
+    steps:
+      - name: First Workflow
+        run: echo "This is first workflow"
+
+  Second-jobs-workflow:
+    runs-on: windows
+    needs: [First-jobs-workflow]
+    steps:
+      - name: Second Workflow
+        run: echo "This is second workflow"
+
+  Third-jobs-workflow:
+    runs-on: windows
+    needs: [First-jobs-workflow, Second-jobs-workflow]
+    steps:
+      - name: Third Workflow
+        run: echo "This is third workflow"
