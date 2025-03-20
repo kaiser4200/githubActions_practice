@@ -15,14 +15,13 @@ jobs:
     steps:
       - name: Generate message
         id: generate-message
-        run: |
-          echo "message=Hello, ${{ github.event.inputs.name }}!" >> $GITHUB_OUTPUT
+        shell: bash
+        run: echo "message=Hello, ${{ github.event.inputs.name }}!" >> $GITHUB_OUTPUT
 
   print-value-workflow:
     runs-on: windows-latest
     needs: [get-value-workflow]
     steps:
       - name: print message
-        run: |
-          echo "${{ needs.get-value-workflow.outputs.msg }}"
+        run: echo "${{ needs.get-value-workflow.outputs.msg }}"
 
