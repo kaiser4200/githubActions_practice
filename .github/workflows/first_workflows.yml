@@ -4,8 +4,7 @@ on: [push]
 jobs:
   first-workflow:
     runs-on: windows-latest
-
-  steps:
+    steps:
     - name: First step
       run: |
         echo "Hello world!"
